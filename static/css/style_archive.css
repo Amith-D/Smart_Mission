@@ -1,0 +1,81 @@
+header{
+	background-color: #204052;
+}
+form {
+	margin-top: -30px;
+	padding-top: 20px;
+    background-image: url('/static/images/bgform1.jpeg');
+}
+
+h1{
+	padding-top: 10px;
+	height: 70px;
+	margin-bottom: 40px;
+	text-align: center;
+	color: white;
+
+}
+.form-group{
+	font-size: 22px;
+	font-weight:bold;
+	color:#204052;
+    
+
+}
+
+table{
+	text-align: center;
+}
+
+.btn {
+	margin-left: 580px;
+	margin-top: 20px;
+	margin-bottom: 30px;
+	width: 200px;
+	background-color: #495CA7;
+	border: none;
+
+}
+
+
+.pagination {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    margin-left: 470px;
+}
+
+.pagination a {
+    margin-right: 8px;
+    margin-left: 10px;
+    height: 44px;
+}
+
+.pagination-number {
+    padding-top: 10px;
+    padding-right:15px;
+    padding-left: 15px;
+    padding-bottom: 10px;
+    border-radius: 2px;
+    color: #fff;
+    background-color: #6D85C7;
+}
+
+.pagination-number:hover,
+.pagination-current {
+    background-color: #3354AA;
+}
+
+.pagination-action {
+    margin: 0 0.1em;
+    display: inline-block;
+    padding: 10px 10px;
+    color: #B9B9B9;
+    font-size: 25px;
+}
+
+.pagination-action:hover,
+.pagination-previous,
+.pagination-next {
+    color: #3354AA;
+}
+

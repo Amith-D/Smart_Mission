@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon.png' %}" />
+     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    
+  </head>
+  <body>
+    
+        <ul class="nav navbar sticky-top" style="background-color:#204051;">
+            
+            <a class="navbar-brand" href="{% url 'index' %}">
+              <img src="{% static 'images/edu.png' %}" width="145" height="100" class="d-inline-block align-center" alt="">SMARTMISSION</a>
+              <li><a class="nav-link navhome" href="{% url 'basic_app:home' %}">Home</a> </li>
+              <li><a class="nav-link navab" href="{% url 'basic_app:about' %}">About</a> </li>
+              <li><a class="nav-link navcon" href="{% url 'basic_app:contact' %}">Contact</a> </li>
+            {% if user.is_authenticated %}
+             
+             <li> <a href="{% url 'logout' %}" class="nav-link">Logout</a> </li>
+                        
+
+            {% else %}
+            <li> <a href="{% url 'basic_app:user_login' %}" class="nav-link">Login</a> </li>
+            {% endif %}
+        </ul>
+  
+    
+       {% block body_block %}
+      {% endblock %}
+     </body>
+</html>
+

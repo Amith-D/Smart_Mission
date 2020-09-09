@@ -1,0 +1,41 @@
+<!--{% extends "basic_app/base.html" %}
+{% block body_block %}
+{% load static %}-->
+<!Doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Admissions</title>
+    <link  rel="stylesheet" href="{% static 'css/stylemenu.css' %}" text="text/css"/>
+</head>
+<body>
+  
+  <img src="{% static 'images/menu_border.svg' %}" class= "menuborder"/>
+  <img src="{% static 'images/data.png' %}" class= "borderpic"/>
+  
+  
+
+   
+    
+    <div class="header">
+        
+           <h2>WELCOME</h2>
+              
+    </div>
+       
+        <form  method="" action=" ">
+            <input formaction="{% url 'basicapp:formpage' %}" type="image" src="{% static 'images/form.png' %}" style =" position: absolute; margin-left:400px; margin-top: 60px; width:180px; height:170px; ">
+        </form>
+        <form  method="" action=" ">
+           <input formaction="" type="image" src="{% static 'images/result.png' %}" style =" position: absolute; margin-left:730px; margin-top:60px; width:200px; height:140px;">
+        </form>
+         <form  method="" action=" ">
+           <input formaction="{% url 'Universityapp:Search' %}" type="image" src="{% static 'images/archive.png' %}" style = "position: absolute; margin-left:1050px; margin-top:25px; width:220px; height: 180px;" >
+          </form>
+         <form  method="" action=" ">
+           <input formaction="index.html" type="image" src="{% static 'images/logout.png' %}" style =" position: absolute; margin-left:740px; margin-top: 290px; width:180px; height:140px;">
+        </form>
+        
+</body>
+</html>
+<!-- {% endblock %} -->

@@ -1,0 +1,268 @@
+{% extends "basic_app/base.html" %}
+{% block body_block %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'css/dashres_style.css' %}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <!--Chart js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+            <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<title>Result</title>
+</head>
+
+<body>
+
+<div class="wrap">
+<div class="top">
+	<h2>{{ res_data.First_Name }} {{ res_data.Last_Name}}</h2>
+	<h2>Predicted Average : {{ res_data.pred_avg_marks|floatformat:2 }}</h2>
+</div>
+<div class="app">
+<p>Application No: {{ res_data.id }}</p>
+<p>Email : {{ res_data.Email }} </p>
+<p>Gender : {% if res_data.Gender == 1 %} Male {% else %} Female </p>{% endif %}
+<p>English Profieciency : {% if res_data.English_Profieciency == 1 %} Beginner {% elif res_data.English_Profieciency == 2 %} Intermidiate {% else %} Native Speaker</p>{% endif %}
+
+<p> Extra Curricular activity : {{res_data.Extra_curricular_activity }} </p>
+
+<p>Level Of Participation : {% if res_data.Level_of_achievement == 1 %} School Level {% elif res_data.Level_of_achievement == 2 %} College Level {% elif res_data.Level_of_achievement == 3 %} National level {% else %}International Level </p>{% endif %}
+
+<p>Father Qualification : {% if res_data.Father_Qualification == '1' %} Below Tenth {% elif res_data.Father_Qualification == '2' %} Tenth {% elif res_data.Father_Qualification == '3' %} Bachelors {% elif res_data.Father_Qualification == '4' %} Masters {% else %} Phd </p>{% endif %}
+
+<p>Mother Qualification : {% if res_data.Mother_Qualification == '1' %} Below Tenth {% elif res_data.Mother_Qualification == '2' %} Tenth {% elif res_data.Mother_Qualification == '3' %} Bachelors {% elif res_data.Mother_Qualification == '4' %} Masters {% else %} Phd  </p>{% endif %}
+
+<p>Family Income :{% if res_data.Annual_family_income == '1' %} Below Lakh {% elif res_data.Annual_family_income == '2' %} 1L-2L {% elif res_data.Annual_family_income == '3' %} 2L-4L {% elif res_data.Annual_family_income == '4' %} 4L-6L {% else %} Above 6 Lakh </p>{% endif %}
+
+<p>Are you a migrate : {% if res_data.Did_you_migrate_frome_hometown == 1  %} No {% else %} Yes </p>{% endif %}
+
+<p>Distance : {{ res_data.Distance_between_school_or_college_and_home }} </p>
+<p>How do describe yourself as : {% if res_data.How_do_describe_yourself_as == 1 %}Introvert{% elif res_data.How_do_describe_yourself_as == 2 %} Extrovert {% else %} Ambivert </p>{% endif %}
+
+<p>Do you take initiative in a Project : {% if res_data.Do_you_take_initiative_in_a_work == 1 %} NO {% else %} Yes </p>{% endif %}
+
+<p>Are you a procratinator : {% if res_data.Are_you_a_procrastinator == 1 %} No {% else %} Yes </p>{% endif %}
+
+<p>Rate your logical reasoning : {{res_data.Logical_reasoning}} </p>
+<p>Are you interested in research  : {%  if res_data.Interested_in_research == 1 %} No {% else %} Yes </p>{% endif %}
+
+<p>Joining Engineering a Personal Choice : {% if res_data.Was_joining_engineering_your_personnel_choice == 1 %}No {% else %} Yes </p>{% endif %}
+
+
+</div>
+<div class="score">
+	       <h4>10th Score</h4>
+       <table class="table table-sm table-bordered">
+  <thead class="thead-dark">
+  <tr>
+     <th> Board</th>
+    <th> Medium</th>
+    <th> Math</th>
+    <th> Science</th>
+    <th> English</th>
+    <th> Total</th>
+  </tr> 
+  </thead>  
+
+ <tbody>
+        <tr> 
+        
+       <td>{% if res_data.Tenth_Board == '1' %} State {% elif res_data.Tenth_Board == '2' %} CBSE {% else %} ICSE </td>{% endif %}
+
+       <td>{% if res_data.Tenth_Medium == '1' %} English {% else %} Kannada</td>{% endif %}
+
+       <td>{{res_data.Tenth_Math}} </td>
+       <td>{{res_data.Tenth_Science}} </td>
+       <td>{{res_data.Tenth_Eng}} </td>
+       <td>{{res_data.Tenth_Total }} </td> 
+    
+       </tr>
+       </tbody>
+
+</table >
+
+       <h4>12th Score</h4>
+
+              <table class="table table-sm table-bordered">
+  <thead class="thead-dark">
+  <tr>
+     
+    <th> Board</th>
+      <th> Math</th>
+    <th> Physics</th>
+    <th> Chemistry</th>
+    <th> Optional </th>
+    <th> English</th>
+    <th> Total</th>
+  
+  </tr> 
+  </thead>  
+
+ <tbody>
+        <tr> 
+           <td>{% if res_data.Twelth_Board == 1 %} State {% elif res_data.Twelth_Board == 2 %} CBSE {% else %} ICSE </td>{% endif %}
+
+        <td>{{res_data.Twelth_Math }} </td>
+       <td>{{res_data.Twelth_Physics}} </td>
+       <td>{{res_data.Twelth_Chemistry}} </td>
+       <td>{{res_data.Twelth_Optional}} </td>
+       <td>{{res_data.Twelth_Eng}} </td>
+       <td>{{res_data.Twelth_Total}} </td>
+    
+
+    
+       </tr>
+       </tbody>
+
+</table >
+<p>CET/COMEDK Score : {{res_data.CET_or_Comedk}}</p>
+
+</div>
+<div class="pred">
+<h4>Predicted Result</h4>
+</div>
+<div id="chart">
+		<canvas id="myChart" width="500px" height="400px"></canvas>
+<script>
+	Chart.plugins.unregister(ChartDataLabels);
+		var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+     plugins: [ChartDataLabels],
+    data: {
+        labels: ['I', 'II', 'III', 'IV', 'V', 'VI','VII','VIII'],
+        datasets: [{
+            label: 'Predicted Score',
+            data: [{{ res_data.I_sem|floatformat:2 }},{{ res_data.II_sem|floatformat:2 }},{{ res_data.III_sem|floatformat:2 }},{{ res_data.IV_sem|floatformat:2 }}, {{ res_data.V_sem|floatformat:2 }},{{ res_data.VI_sem|floatformat:2 }},{{ res_data.VII_sem|floatformat:2 }},{{ res_data.VIII_sem|floatformat:2 }} ],
+            backgroundColor: [
+               'rgb(182, 207, 229)',
+               'rgb(128, 164, 195)',
+               'rgb(84, 130, 172 )',
+               'rgb(61, 105, 145)',
+                'rgb(48, 89, 126)',
+                'rgb(29, 61, 90)',
+                'rgb(8, 44, 75)',
+                'rgb(1, 23, 44 )',
+                
+                
+               
+
+            ],
+            borderColor: [
+       
+
+              
+            ],
+            hoverBackgroundColor: 'rgb(182, 207, 229)',
+            
+        }]
+    },
+    options:{
+    	"responsive": false,
+    	plugins:{
+    		datalabels:{
+    			anchor:'end',
+    			align:'start',
+          color:'white',
+
+    		}
+    	},
+        scales: {
+
+          xAxes: [{
+              gridLines: {
+                display: false
+              },
+              ticks: {
+                    beginAtZero: true,
+                    display:true
+                }
+            }],
+            yAxes: [{
+              gridLines: {
+                display: false
+              },
+              ticks: {
+                    beginAtZero: true,
+                    display:false
+                }
+            }]
+        }
+    }
+});
+</script>
+<div class="predval">
+<h6> Average Score: {{ res_data.pred_avg_marks|floatformat:2 }} &emsp;&emsp;&emsp; Extra Curricular Activity :{% if res_data.pred_cocur == 1 %} college level {% elif res_data.pred_cocur == 2 %} inter-college {% elif res_data.pred_cocur == 3 %} University Level{% else %} State Level {% endif %} </h6>
+
+<h6>Intership Status: {% if res_data.pred_intern == 1 %} Negative {% elif res_data.pred_intern == 2 %} Positive {% endif %}  	&emsp;&emsp;&emsp;&emsp; Expected Package: {% if res_data.pred_pack > 1 %} Above 3.5 lakh {% else %} No Campus Placement {% endif %}</h6>
+
+</div>
+</div>
+<div id="chart_div" style="width: 200px; height: 120px;">
+    
+     <script type="text/javascript">
+      google.charts.load('current', {'packages':['gauge']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['CGPA',{{ res_data.pred_avg_marks|floatformat:2 }} ],
+          ['Merit', {{ res_data.merit }} ],
+          
+        ]);
+
+        var options = {
+          width: 340, height: 340,
+          redFrom: 0, redTo: 60,
+          yellowFrom:60, yellowTo: 80,
+          greenFrom:80,greenTo:100,
+          minorTicks: 5
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+            
+$('#chart_div circle:nth-child(2)').attr('fill', 'rgb(1, 23, 44 )'); //background
+$('#chart_div circle:nth-child(2)').attr('stroke', 'gray');
+$('#chart_div circle:nth-child(2)').attr('stroke-width', '2');
+$('#chart_div circle:nth-child(1)').attr('fill', 'rgb(1, 23, 44 )'); //outer-ring
+$('#chart_div circle:nth-child(1)').attr('stroke-width', '1');
+$('#chart_div circle:nth-child(1)').attr('stroke', 'gray');
+$('#chart_div circle:nth-child(3)').attr('fill', '#666666'); //the circle pointer
+$('#chart_div circle:nth-child(3)').attr('stroke', '');
+$('#chart_div text').attr('fill', 'white');
+$('#chart_div text:nth-child(1)').attr('fill', 'white');
+$('#chart_div text:nth-child(1)').attr('font-size', '15');
+$('#chart_div text').attr('left');
+$('#chart_div path:nth-child(2)').attr('fill', 'white');
+$('#chart_div path:nth-child(2)').attr('stroke', 'white');
+$('#chart_div path:nth-child(2)').attr('fill-opacity', '2');
+
+    }
+    </script>
+</div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

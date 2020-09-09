@@ -1,0 +1,21 @@
+.datawelcome{
+  position: absolute;
+  left: 20px;
+  top: 130px;
+  width: 700px;
+  height: 480px;
+  transform: rotate(3deg);
+  z-index: 4;
+
+}
+
+.layer1{
+  position: absolute;
+margin-left:-370px;
+  top: -300px;
+  width: 1600px;
+  height: 918px;
+  z-index: 5;
+
+
+}

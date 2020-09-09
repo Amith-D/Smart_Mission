@@ -1,0 +1,124 @@
+html{
+  height: 100%;
+}
+
+body{
+background-color: #537895;
+background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
+}
+
+.container{
+  width: 380px;
+  height: 410px;
+  margin-top: 100px;
+  border-bottom: 2px solid white;
+position: relative;
+
+  
+}
+.container:after{
+  content: '';
+  display: block;
+position: absolute;
+width: 120px;
+top:-5px;
+right: 10px;
+border: 1px solid white;
+margin-top: 90px;
+
+
+}
+.container:before{
+  content: '';
+  display: block;
+position: absolute;
+width: 120px;
+top:-5px;
+left: 10px;
+border:1px solid white;
+margin-top: 90px;
+}
+
+
+.icon{
+  
+  height: 120px;
+  width: 120px;
+  margin-left: 115px;
+  margin-top: 20px;
+   filter:  brightness(0) invert(1);
+}
+
+.user{
+  padding-top: 20px;
+  padding: 15px;
+  margin-left: -15px;
+  
+}
+.user i{
+  position: absolute;
+  padding-top: 10px;
+  padding-left: 10px;
+  color:white;
+}
+
+.pwd{
+  padding-left:15px;
+  padding-right: 15px;
+  padding-bottom: 15px; 
+  margin-left: -15px;
+}
+
+.pwd i{
+  position: absolute;
+  padding-top: 10px;
+  padding-left: 10px;
+  color: white;
+}
+
+.login{
+  margin-left: 45px;
+  padding: 10px;
+}
+.btn{
+  width: 170px;
+  margin-left: -5px; 
+  background-color: #495CA7;
+  border: none;
+}
+.btn:hover{
+  background-color:#6072B9;
+}
+.username{
+  padding: 5px;
+  width: 275px;
+  outline: none;
+text-align: center;
+opacity: 70%;
+border: 1px solid white;
+border-radius: 10px;
+}
+.password{
+  padding: 5px;
+  width: 275px;
+   outline: none;
+   text-align: center;
+   opacity: 70%;
+border: 1px solid white;
+border-radius: 10px;
+}
+form{
+margin-top: 20px;
+margin-left: 35px;
+}
+footer{
+  margin-left: 100px;
+}
+
+footer a{
+  color: white;
+}
+
+footer a:hover{
+  color: gray;
+}

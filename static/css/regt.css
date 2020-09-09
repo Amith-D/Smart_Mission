@@ -1,0 +1,37 @@
+html{
+	height: 100%;
+}
+
+body{
+background-image: url('/static/images/bgform1.jpeg');
+}
+.wrap{
+	margin-left: 270px;
+	margin-top: 70px;
+	margin-right: 250px;
+	padding-top:15px;
+	padding-bottom: 15px;
+	padding-left: 15px;
+	background-color: white;
+	border-radius: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form-group{
+	padding-left: 20px;
+}
+
+h2{
+	padding-bottom: 20px;
+	padding-left: 20px;
+
+}
+
+.btn{
+	margin-left: 20px;
+}
+
+
+h1{
+
+}

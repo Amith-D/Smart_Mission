@@ -1,0 +1,143 @@
+{% extends "basic_app/base.html" %}
+{% block body_block %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+<link rel="stylesheet" type="text/css" href="{% static 'css/style_result.css' %}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <!--Chart js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+            <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        
+
+
+                <title>Result</title> 
+    </head>
+
+<body style="background-image:url('/static/images/bgform2.jpg');"> 
+   
+   <header>
+   	<h1> PREDICTED RESULT</h1>
+   </header> 
+<div class="content">
+<div class="wrap">
+<h5>Name :  {{ datas.First_Name }} {{datas.Last_Name}}</h5>
+
+	<h5>Extra Co-curriculam : {% if form.8 == 1 %} college Level {% elif form.8 == 2 %} college level {% elif form.8 == 3 %} inter-college Level {% else %} State Level {% endif %}</h5>
+	<h5>Internship status : {% if form.9  == 1 %} Negative {% else %} Positive {% endif %}</h5>
+	<h5>Expected package : {% if form.10 > 1 %} Above 3.5 {% else %} No Campus Placement {% endif %}</h5>
+</div>
+
+<div class="chart"> 
+<canvas id="myChart" width="500px" height="400px"></canvas>
+<script>
+		var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['I', 'II', 'III', 'IV', 'V', 'VI','VII','VIII'],
+        datasets: [{
+            label: 'Marks',
+            data: [{{ form.0 }},{{ form.1 }},{{ form.2 }},{{ form.3 }}, {{ form.4 }},{{ form.5 }},{{ form.6 }},{{ form.7 }},10 ],
+            backgroundColor: [
+               'rgb(182, 207, 229)',
+               'rgb(128, 164, 195)',
+               'rgb(84, 130, 172 )',
+               'rgb(61, 105, 145)',
+                'rgb(48, 89, 126)',
+                'rgb(29, 61, 90)',
+                'rgb(8, 44, 75)',
+                'rgb(1, 23, 44 )',
+                
+                
+               
+
+            ],
+            borderColor: [
+       
+
+              
+            ],
+            hoverBackgroundColor: 'rgb(182, 207, 229)',
+            borderWidth: 1,
+        }]
+    },
+    options:{
+    	"responsive": false,
+        scales: {
+        	xAxes: [{
+            	gridLines: {
+            		display: false
+            	},
+            	ticks: {
+                    beginAtZero: true
+                }
+            }],
+            yAxes: [{
+            	gridLines: {
+            		display: false
+            	},
+            	ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+     
+</script>
+</div>
+<div id="chart_div" style="width: 400px; height: 120px; margin-top: -230px;">
+    
+     <script type="text/javascript">
+      google.charts.load('current', {'packages':['gauge']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['CGPA', {{ form.11 }}],
+          ['Merit',{{ form.12 }} ],
+          
+        ]);
+
+        var options = {
+          width: 400, height: 300,
+          redFrom: 0, redTo: 60,
+          yellowFrom:60, yellowTo: 80,
+          greenFrom:80,greenTo:100,
+          minorTicks: 5
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+            
+$('#chart_div circle:nth-child(2)').attr('fill', 'rgb(1, 23, 44 )'); //background
+$('#chart_div circle:nth-child(2)').attr('stroke', 'gray');
+$('#chart_div circle:nth-child(2)').attr('stroke-width', '2');
+$('#chart_div circle:nth-child(1)').attr('fill', 'rgb(1, 23, 44 )'); //outer-ring
+$('#chart_div circle:nth-child(1)').attr('stroke-width', '1');
+$('#chart_div circle:nth-child(1)').attr('stroke', 'gray');
+$('#chart_div circle:nth-child(3)').attr('fill', '#666666'); //the circle pointer
+$('#chart_div circle:nth-child(3)').attr('stroke', '');
+$('#chart_div text').attr('fill', 'white');
+$('#chart_div text:nth-child(1)').attr('fill', 'white');
+$('#chart_div text:nth-child(1)').attr('font-size', '15');
+$('#chart_div text').attr('left');
+$('#chart_div path:nth-child(2)').attr('fill', 'white');
+$('#chart_div path:nth-child(2)').attr('stroke', 'white');
+$('#chart_div path:nth-child(2)').attr('fill-opacity', '2');
+
+    }
+    </script>
+</div>
+</div>
+</body>        
+</html>
+{% endblock %}

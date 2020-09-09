@@ -1,0 +1,31 @@
+
+{% extends "basic_app/base.html" %}
+<!DOCTYPE html>
+{% block body_block %}
+{% load static %}
+<html>
+    <head>
+        <title>Admission Form</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/form_style.css' %}">
+    </head>
+    <body>
+        <header>
+        <h1>Admission Form</h1>
+        </header>
+        <section>
+        <div class=" offset-2 col-md-8">
+            <form method = "POST">{% csrf_token %}
+                <div class="form-group">
+                {{form.as_p}}
+                </div>
+                 <input type = "submit" class = "btn btn-primary" value = "Save PDF">
+                <input type = "submit" class = "btn btn-primary" value = "Submit Form">
+                
+            </form>
+            
+        </div>
+      </section>
+    </body>
+</html>
+{% endblock %}

@@ -1,0 +1,38 @@
+body{
+	background-image: url("/static/images/bgform2.jpg");
+	height: 100%;
+}
+title{
+	display:none;
+}
+
+header{
+	background-color:#204051;
+	height: 80px;
+	width: 750px;
+	margin-left: 300px;
+	padding: 15px;
+	margin-top: 100px;
+
+}
+h1{
+	color: white;
+	text-align: center;
+}
+
+.btn{
+margin-top: 20px;
+margin-bottom: 60px;
+background-color:  #495CA7;
+border: none;
+
+}
+
+section{
+	padding-top: 40px;
+	width: 750px;
+	margin-left: 300px;
+	margin-bottom: 100px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	background-color: white;
+}

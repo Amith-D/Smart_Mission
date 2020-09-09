@@ -1,0 +1,237 @@
+{% extends "basic_app/base.html" %}
+{% block body_block %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/dashstyle.css' %} ">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <script src="https://kit.fontawesome.com/868cad16b6.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+	<title>Dashboard</title>
+	
+</head>
+<body>
+
+
+
+<div  class="rank">
+
+<table id="Students" class="table table-hover table-sm ">
+	<div class="heading">
+		<h5>Candidates</h5>
+		<form method="GET" action="{% url 'basicapp:dash' %}">
+			<input class="search" style="outline-style: none;border-radius: 6px;border: none;" name="q" value="{{request.GET.q}}" placeholder="Search">
+			<button style="padding-left:5px;padding-right:5px; padding-top: 2px; padding-bottom: 1px; margin-top: -4px; margin-left: -2px;" class="btn btn-primary" type="submit">GO</button>
+		</form>
+	</div>
+<thead class="thead-dark">
+	<tr>
+	<th>ID</th>
+	<th>Name</th>
+	<th>Score</th>
+	<th>Date</th>
+    <th></th>
+	</tr>
+</thead>
+<div class = "studentdata">
+{% for j in rank %} 
+<tbody>
+<tr>
+ <td> <a href= "{% url 'basicapp:result' j.id %}">{{j.id}}</a></td>
+<td>{{ j.First_Name }} </td>
+<td>{{ j.pred_avg_marks|floatformat:2 }}</td>
+<td>{{j.Time|date:"m-d"}}</td>
+<td><a href="{% url 'basicapp:delete' j.id %}"><i class="fas fa-trash-alt"></i></a></td>
+</tr>
+</tbody>
+{% endfor%}
+</div>
+
+</table>
+</div>
+
+
+<div class="dash">
+	<div class="chart"> 
+<canvas id="myChart" width="200px" height="200px"></canvas>
+<script>
+		var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['Male', 'Female'],
+        datasets: [{
+            label: 'Gender',
+            data: [{{ m }},{{ f }} ],
+            backgroundColor: [
+               'rgb(84, 130, 172 )',
+              
+                'rgb(29, 61, 90)',
+                              
+               
+            ],
+            borderColor: [
+       
+
+              
+            ],
+            hoverBackgroundColor: 'rgb(182, 207, 229)',
+            borderWidth: 1,
+        }]
+    },
+    options:{
+    	"responsive": false,
+        scales: {
+
+        	xAxes: [{
+            	gridLines: {
+            		display: false
+            	},
+            	ticks: {
+                    beginAtZero: false,
+                    display:false
+                }
+            }],
+            yAxes: [{
+            	gridLines: {
+            		display: false
+            	},
+            	ticks: {
+                    beginAtZero: false,
+                    display:false
+                }
+            }]
+        }
+    }
+});
+     
+</script>
+</div>
+	<div class="chart2"> 
+<canvas id="myChart2" width="300px" height="300px"></canvas>
+<script>
+		var ctx2 = document.getElementById('myChart2').getContext('2d');
+var myChart2 = new Chart(ctx2, {
+    type: 'bar',
+    data: {
+        labels: ['A+', 'A','B','C','D','E'],
+        datasets: [{
+            label: 'Grade',
+            data: [{{ marks.0 }},{{ marks.1 }},{{ marks.2 }},{{ marks.3 }},{{ marks.4 }},{{ marks.5}} ],
+            backgroundColor: [
+               'rgb(128, 164, 195)',
+               'rgb(84, 130, 172 )',
+               'rgb(61, 105, 145)',
+                'rgb(48, 89, 126)',
+                'rgb(29, 61, 90)',
+                'rgb(8, 44, 75)',
+                              
+               
+            ],
+            borderColor: [
+       
+
+              
+            ],
+            hoverBackgroundColor: 'rgb(182, 207, 229)',
+            borderWidth: 1,
+        }]
+    },
+    options:{
+    	"responsive": false,
+        scales: {
+
+        	xAxes: [{
+            	gridLines: {
+            		display: false
+            	},
+            	ticks: {
+                    beginAtZero: false,
+                    display:true
+                }
+            }],
+            yAxes: [{
+            	gridLines: {
+            		display: false
+            	},
+            	ticks: {
+                    beginAtZero: false,
+                    display:false
+                }
+            }]
+        }
+    }
+});
+     
+</script>
+</div>
+    <div class="chart3"> 
+<canvas id="myChart3" width="700px" height="500px"></canvas>
+<script>
+        var ctx3 = document.getElementById('myChart3').getContext('2d');
+var myChart3 = new Chart(ctx3, {
+    type: 'line',
+    data: {
+        datasets: [{
+            label: 'Average CGPA',
+            data: [{{ averages.2000 }},{{ averages.2001 }},{{ averages.2002 }},{{ averages.2003 }},{{ averages.2004 }},{{ averages.2005 }},{{ averages.2006 }},{{ averages.2007 }},{{ averages.2008 }},{{ averages.2009 }},{{ averages.2010 }},{{ averages.2011 }},{{ averages.2012 }},{{ averages.2013 }},{{ averages.2014 }},{{ averages.2015 }},{{ averages.2016 }},{{ recentavg }} ],
+            borderColor:'rgb(162,200,224)',
+            backgroundColor:'rgba(162,200,224,0.85)',
+            lineTension:0,
+            pointRadius:0
+
+        }, {
+            label: 'Merit',
+            data:[{{ merit.2000 }},{{ merit.2001 }},{{ merit.2002 }},{{ merit.2003 }},{{ merit.2004 }},{{ merit.2005 }},{{ merit.2006 }},{{ merit.2007 }},{{ merit.2008 }},{{ merit.2009 }},{{ merit.2010 }},{{ merit.2011 }},{{ merit.2012 }},{{ merit.2013 }},{{ merit.2014 }},{{ merit.2015 }},{{ merit.2016 }},{{ recentmerit.i_sum__avg }},6.5],
+
+            // Changes this dataset to become a line
+            lineTension:0,
+            type: 'line',
+            borderColor:'rgb(27,123,180)',
+            backgroundColor:'rgba(27,123,180,0.85)',
+            pointRadius:0
+        }],
+        labels: ['2000', '2001', '2002', '2003','2004','2005','2006','2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017'],
+         backgroundColor: [],
+         borderColor: [],
+
+    },
+    options:{
+
+        "responsive": false,
+        scales: {
+
+            xAxes: [{
+                gridLines: {
+                    display: false
+                },
+                ticks: {
+                    beginAtZero: false,
+                    display:true
+                }
+            }],
+            yAxes: [{
+                gridLines: {
+                    display: false
+                },
+                ticks: {
+                    beginAtZero: false,
+                    display:true
+                }
+            }]
+        }
+    }
+});
+     
+</script>
+</div>
+</div>
+</body>
+
+{% endblock %}

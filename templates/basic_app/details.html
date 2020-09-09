@@ -1,0 +1,215 @@
+{% extends "basic_app/base.html" %}
+{% block body_block %}
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <title>Student Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_details.css' %}">
+    <title>{{data.USN}</title>
+    </head>
+<body>
+<div class="name">
+<header>
+ <h2>Name : {{data.First_Name}} {{data.Last_Name}}</h2>
+  <h5>USN : {{data.USN}} <h5>
+</header>
+</div>
+<div class="content">
+  <div class="wrap">   
+      <p>University : {{data.University}}<p>
+      <td>Branch : {{data.Branch }} </td>
+      <p>Email : {{ data.Email }} </p>
+      <p>Gender :{% if data.Gender == '2' %} Female {% else %} Male</p>
+      {% endif %}
+
+      <p>English Profieciency : {% if data.English_Profieciency == '1' %} Beginner {% elif data.English_Profieciency == '2' %} Intermediate {% else %} Native Speaker</p>
+      {% endif %}
+
+      <p>Father Qualification : {% if data.FatherQualification == '1' %} Below Tenth {% elif data.FatherQualification == '2' %} Tenth {% elif data.FatherQualification == '3' %} Bachelors {% elif data.FatherQualification == '4' %} Masters {% else %} Phd </p>
+      {% endif %}
+
+       <p>Mother Qualification :  {% if data.MotherQualification == '1' %} Below Tenth {% elif data.MotherQualification == '2' %} Tenth {% elif data.MotherQualification == '3' %} Bachelors {% elif data.MotherQualification == '4' %} Masters {% else %} Phd  </p>
+       {% endif %}
+
+       <p>FamilyIncome : {% if data.FamilyIncome == '1' %} Below Lakh {% elif data.FamilyIncome == '2' %} 1L-2L {% elif data.FamilyIncome == '3' %} 2L-4L {% elif data.FamilyIncome == '4' %} 4L-6L {% else %} Above 6 Lakh </p>
+       {% endif %}
+
+       <p>Are you a migrate : {% if data.Are_you_a_migrate == '1' %} NO {% elif data.Are_you_a_migrate == '1.5' %} May Be {% else %} YES </p>
+       <p>Distance : {{data.Distance }} </p>{% endif %}
+
+       <p>Can you handle a professional team : {% if data.Can_you_handle_a_professional_team == '1'%} NO {% elif data.Can_you_handle_a_professional_team == '2'%} NO {% else %} Maybe </p>{% endif %}
+
+       <p>Are you a team player : {% if data.Are_you_a_team_player == 1  %}No {% elif data.Are_you_a_team_player == 2  %} Yes {% else %} May Be </p>{% endif %}
+
+       <p>Have you worked in the same field : {% if data.Have_you_worked_in_the_same_field == 1 %} No {% elif data.Have_you_worked_in_the_same_field ==  2 %} No {% else %} Maybe</p>
+       {% endif %}
+
+       <p>How do describe yourself as : {% if data.How_do_describe_yourself_as == 1 %} Introvert {% elif data.How_do_describe_yourself_as == 2 %} Ambivert {% else %} Extrovert  </p> {% endif %}
+       <p>Do you take initiative in a work : {% if data.Do_you_take_initiative_in_a_work == 1 %} No {% elif data.Do_you_take_initiative_in_a_work == 2 %}Yes {% else %} Maybe </p>{% endif %}
+       <p>Are you a procratinator : {% if data.Are_you_a_procrastinator == 1 %} No {% elif data.Are_you_a_procrastinator == 2  %} Yes {% else %} May be </p>{% endif %}
+       <p>Rate your logical reasoning : {{data.Logical_reasoning}} </p>
+       <p>Have you been in any research : {% if data.Have_you_been_in_any_research == 1 %} No {% elif data.Have_you_been_in_any_research == 2 %} Yes {% else %} May be</p> {% endif %}
+       <p>Have you done any Internship :{% if data.Internship == 1 %} No {% elif data.Internship == 2 %} Yes {% else %} May be </p>{% endif %}
+ </div>      
+
+<div class="container">
+
+       <h4>10th Score</h4>
+       <table class="table table-sm">
+  <thead class="thead-light">
+  <tr>
+     <th> Board</th>
+    <th> Medium</th>
+    <th> Math</th>
+    <th> Science</th>
+    <th> English</th>
+    <th> Total</th>
+  </tr> 
+  </thead>  
+
+ <tbody>
+        <tr> 
+        
+       <td>{% if data.Tenth_Board == 1 %} State {% elif data.Tenth_Board == 2 %} CBSE {% else %} ICSE </td>{% endif %}
+       <td>{% if data.Tenth_Medium == 1 %} English {% else %} Kannada</td>{% endif %}
+       <td>{{data.Tenth_Math}} </td>
+       <td>{{data.Tenth_Science}} </td>
+       <td>{{data.Tenth_Eng}} </td>
+       <td>{{data.Tenth_Total }} </td> 
+    
+       </tr>
+       </tbody>
+
+</table >
+
+       <h4>12th Score</h4>
+
+              <table class="table table-hover">
+  <thead class="thead-light">
+  <tr>
+     
+    <th> Math</th>
+    <th> Physics</th>
+    <th> Chemistry</th>
+    <th> Optional </th>
+    <th> English</th>
+    <th> Total</th>
+    <th> Board</th>
+  </tr> 
+  </thead>  
+
+ <tbody>
+        <tr> 
+        
+        <td>{{data.Twelth_Math }} </td>
+       <td>{{data.Twelth_Physics}} </td>
+       <td>{{data.Twelth_Chemistry}} </td>
+       <td>{{data.Twelth_Optional}} </td>
+       <td>{{data.Twelth_Eng}} </td>
+       <td>{{data.Twelth_Total}} </td>
+       <td>{% if data.Twelth_Board == 1 %} State {% elif data.Twelth_Board == 2 %} CBSE {% else %} ICSE </td>{% endif %}
+
+    
+       </tr>
+       </tbody>
+
+</table >
+<p>CET/COMEDK Score : {{data.CETorComedk}}</p>
+   
+       <h4>College Score</h4>
+
+         <table class="table table-sm">
+  <thead class="thead-light">
+  <tr>
+    <th>I</th>
+    <th>II</th>
+    <th>III</th>
+    <th>IV</th>
+    <th>V</th>
+    <th>VI</th>
+    <th>VII</th>
+    <th>VIII</th>
+     <th>CGPA</th>
+  </tr> 
+  </thead>  
+
+ <tbody>
+        <tr> 
+      
+       <td>{{data.First_Sem}} </td>
+       <td>{{data.Second_Sem}} </td>
+       <td>{{data.Third_Sem}} </td>
+       <td>{{data.Fourth_Sem}} </td>
+       <td>{{data.Fifth_Sem }} </td>
+       <td>{{data.Sixth_Sem}} </td>
+       <td>{{data.Seventh_Sem}} </td>
+       <td>{{data.Eight_Sem}} </td>
+       <td> {{data.CGPA }} </td>
+
+    
+       </tr>
+       </tbody>
+
+</table >
+
+
+
+       <h3>Extra-Curricular</h3>
+       <h4>School</h4>
+       <table class="table table-sm ">
+  <thead class="thead-light">
+  <tr>
+     <th>Extra Curricular participation</th>
+    <th>Extra curricular activity</th>
+    <th>Level of Achivement</th>
+  </tr> 
+  </thead>  
+
+ <tbody>
+        <tr> 
+        <td>{% if data.Extra_curricular_participation == 1 %} No {% elif data.Extra_curricular_participation == 2 %} Yes {% else %} Maybe</td>{% endif %}
+
+       <td>{{ data.Extra_curricular_activity }} </td>
+       <td>{% if data.Levelof_achievement == '1' %} School Level {% elif data.Levelof_achievement == '2' %} State Level {% elif data.Levelof_achievement == '3' %} National Level {% else %} International Level </td>{% endif %}
+
+    
+       </tr>
+       </tbody>
+
+</table >
+
+
+       <h4>College</h4>
+       <table class="table table-sm">
+  <thead class="thead-light">
+  <tr>
+     <th>Extra Curricular participation</th>    
+     <th>Extra curricular activity</th>
+    <th>Level of Achivement</th>
+    </tr> 
+  </thead>  
+
+ <tbody>
+        <tr> 
+     <td>{% if data.Extra_activity == '1' %} No {% elif data.Extra_activity == '2' %} Yes {% else %} Maybe</td>{% endif %}
+
+       <td>{{data.Specify_extraactivity}} </td>
+       <td>{% if data.What_level_of_participation == '1' %} College Level {% elif data.What_level_of_participation == '2' %} State Level {% elif data.What_level_of_participation == '3' %} National Level {% else %} International Level</td> {% endif %}
+
+       </tr>
+       </tbody>
+
+</table >
+      
+</div>
+</div>
+
+</body>
+
+</html>
+
+{% endblock %} 

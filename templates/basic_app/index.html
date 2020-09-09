@@ -1,0 +1,38 @@
+{% extends "basic_app/base.html" %}
+{% block body_block %}
+<!DOCTYPE html>
+{% load static %}
+<html>
+<link rel="stylesheet" type="text/css" href="{% static 'css/style_index.css' %}">
+ <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+<head>
+	<title>SMARTMISSION</title>
+</head>
+<body>
+<div class="banner">
+<svg viewBox="0 0 1350 500">
+  <symbol id="s-text">
+    <text text-anchor="middle" x="50%" y="80%">SMARTMISSION</text>
+  </symbol>
+
+  <g class="g-ants">
+    <use xlink:href="#s-text" class="text-copy"></use>
+    <use xlink:href="#s-text" class="text-copy"></use>
+    <use xlink:href="#s-text" class="text-copy"></use>
+    <use xlink:href="#s-text" class="text-copy"></use>
+    <use xlink:href="#s-text" class="text-copy"></use>
+  </g>
+</svg>
+
+</div>
+<div class="sub">
+<span class="text1">Admissions</span>
+<span class="text2">Made Smarter </span>	
+</div>
+</div>
+</body>
+</html>
+
+{% endblock %}

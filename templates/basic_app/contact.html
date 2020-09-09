@@ -1,0 +1,27 @@
+{% extends "basic_app/base.html" %}
+{% block body_block %}
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/contactstyle.css' %} ">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<title>Contact</title>
+</head>
+<body>
+	<div class="offset-4 col-md-4">
+		<div class="heading">
+			<h3>Contact Us</h3>
+			</div>
+		<form method='POST'>{% csrf_token %}
+			
+	<div class="form-group">
+	{{ cont.as_p }}
+	</div>
+	<input class ="btn btn-primary" type="submit" name="save">
+</form>
+	</div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,132 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300&display=swap');
+html, body{
+  height: 100%;
+   font-weight: 900;
+}
+
+.jumbotron{
+	 background-image: url('');
+	 height: 300px;
+	
+}
+
+body{
+
+  font-family: 'Montserrat';
+
+}
+
+
+svg {
+    display: block;
+    font: 10.5em 'Rowdies';
+    width: 960px;
+    height: 270px;
+    margin: 0 auto;
+}
+
+.text-copy {
+    fill: none;
+    stroke: white;
+    stroke-dasharray: 6% 29%;
+    stroke-width: 5px;
+    stroke-dashoffset: 0%;
+    animation: stroke-offset 5.5s infinite linear;
+}
+
+.text-copy:nth-child(1){
+	stroke: rgb(128, 164, 195);
+	animation-delay: -1;
+}
+
+.text-copy:nth-child(2){
+	stroke: rgb(84, 130, 172 );
+	animation-delay: -2s;
+}
+
+.text-copy:nth-child(3){
+	stroke: rgb(61, 105, 145);
+	animation-delay: -3s;
+}
+
+.text-copy:nth-child(4){
+	stroke: rgb(29, 61, 90);
+	animation-delay: -4s;
+}
+
+.text-copy:nth-child(5){
+	stroke: rgb(8, 44, 75);
+	animation-delay: -5s;
+}
+.text-copy:nth-child(6){
+	stroke: rgb(48, 89, 126);
+	animation-delay: -5s;
+}
+
+@keyframes stroke-offset{
+	100% {stroke-dashoffset: -35%;}
+}
+
+
+.sub{
+	text-align: center;
+	position: absolute;
+	top:25%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 100%;
+	margin-top: 35px;
+	font-size: 50px;
+	color:  rgb(29, 61, 90);
+	font-family: 'Rowdies', cursive;
+
+}
+
+.para{
+	width: 1070px;
+	margin-left: 150px;
+	text-align: justify;
+	margin-top: 60px;
+	font-size: 20px;
+	font-family: 'Rowdies', cursive;
+}
+
+.team{
+	margin-top: 70px;
+	width: 1070px;
+	margin-left: 150px;
+	text-align: center;
+	margin-bottom: 50px;
+	font-family: 'Rowdies', cursive;
+
+}
+h1{
+	padding-bottom: 50px;
+	font-family: 'Rowdies', cursive;
+}
+
+.card-deck{
+width: 850px;
+margin-left: 100px;
+}
+.card{
+
+	border-bottom-left-radius:20px; 
+	border-bottom-right-radius:20px; 
+	border-top-left-radius:100px; 
+	border-top-right-radius:100px; 
+	border:none;
+
+}
+
+.card-img-top{
+	border-radius: 200px;
+}
+
+.card-1{
+	padding-right:75px;
+}
+.card-2{
+	padding-right:75px;
+}

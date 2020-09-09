@@ -1,0 +1,71 @@
+{% extends "basic_app/base.html" %}
+{% block body_block %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/aboutstyle.css' %}">
+	<title>About </title>
+</head>
+<body>
+<div class="jumbotron">
+	<div class="sub">
+<p>What is </p>
+</div>
+<svg viewBox="0 0 1350 500">
+  <symbol id="s-text">
+    <text text-anchor="middle" x="50%" y="65%">SMARTMISSION</text>
+  </symbol>
+
+  <g class="g-ants">
+    <use xlink:href="#s-text" class="text-copy"></use>
+    <use xlink:href="#s-text" class="text-copy"></use>
+    <use xlink:href="#s-text" class="text-copy"></use>
+    <use xlink:href="#s-text" class="text-copy"></use>
+    <use xlink:href="#s-text" class="text-copy"></use>
+  </g>
+</svg>
+
+</div>
+<div class="para">
+	<p>The hardships faced during the admission processes at the Higher Educational Institutes forms the cornerstone of our project "SMARTMISSION". This profound system can be used in admission process. Machine Learning forms the cognitive basis of this system. The indeginous python framework, Django made it possible to collaborate the backend with the front end. The machine learning model built inside takes on previous academic records of the student and gives a coherent prediction of the performance of the student in his/her undergraduate program. The predicted results forms the factor of deciding whether to admit the student or not, whose judicial consent and sovereignty lies only in the hands of the deans who also are the end users of the system. Thus the system not only makes the admission process easier but also preemptive decisions and the users beneficiaries.</p>
+
+	
+
+</div>
+<div class="team">
+	<h1> Our Team </h1>
+	<div class="card-deck">
+  <div class="card card-1">
+    <img class="card-img-top" src="{% static 'images/sara.jpeg' %}" alt="Sarah">
+    <div class="card-body">
+      <h5 class="card-title">Sarah Sheryl</h5>
+      <p class="card-text"></p>
+    </div>
+  </div>
+  <div class="card card-2">
+    <img class="card-img-top" src="{% static 'images/amith.jpeg' %}" alt="Amith">
+    <div class="card-body">
+      <h5 class="card-title">Amith Doreswamy</h5>
+      <p class="card-text"></p>
+
+    </div>
+  </div>
+  <div class="card card-3">
+    <img class="card-img-top" src="{% static 'images/rich.jpeg' %}" alt="Richie">
+    <div class="card-body">
+      <h5 class="card-title">Richie Arnold</h5>
+      <p class="card-text"></p>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>
+
+{% endblock %}

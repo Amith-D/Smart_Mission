@@ -1,0 +1,122 @@
+{% extends "basic_app/base.html" %}
+{% block body_block %}
+
+
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Archive</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_archive.css' %}">
+    <script src="https://kit.fontawesome.com/868cad16b6.js" crossorigin="anonymous"></script>
+    
+    </head>
+<body>
+
+
+
+{% load student_filter %}
+
+  <header>
+<h1>Student Archive</h1>
+
+</header>
+<div class="search">
+<form class="form-group" action=" " method="GET">
+    
+      <div class="container">
+      <div class="row">
+        <div class="form-group offset-2 col-md-3">
+          {{ myFilter.form.University.label_tag }}
+          {% render_field myFilter.form.University class="form-control" %}
+        </div>
+         <div class="form-group col-md-3">
+          {{ myFilter.form.USN.label_tag }}
+          {% render_field myFilter.form.USN class="form-control" %}
+        </div>
+        <div class="form-group col-md-3">
+          {{ myFilter.form.First_Name.label_tag }}
+          {% render_field myFilter.form.First_Name class="form-control" %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group offset-3 col-md-3">
+          {{ myFilter.form.Last_Name.label_tag }}
+          {% render_field myFilter.form.Last_Name class="form-control" %}
+        </div>
+         <div class="form-group col-md-3">
+          {{ myFilter.form.joinyear.label_tag }}
+          {% render_field myFilter.form.joinyear class="form-control" %}
+        </div>
+      </div>
+      </div>
+  <input class=" btn btn-primary " type="submit" value="Search">
+</form> 
+</div>
+    
+<table class="table table-hover">
+  <thead class="thead-dark">
+  <tr>
+     <th>ID</th>
+    <th>University</th>
+    <th>Email</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>USN</th>
+    <th>Year of Joining</th>
+  </tr> 
+  </thead>  
+
+ <tbody>
+{% for student in all_data %}
+        <tr> 
+        
+        <td> <a href= "{% url 'Universityapp:details' student.id %}">{{student.id}}</a></td>
+       <td>{{ student.University }} </td>
+       <td>{{ student.Email }} </td>
+       <td>{{student.First_Name}} </td>
+       <td>{{student.Last_Name}} </td>
+       <td>{{student.USN}} </td>
+       <td>{{student.joinyear }} </td> 
+    
+       </tr>
+       </tbody>
+
+ {% endfor %} 
+</table >
+
+  <div class="pagination">
+    {% if all_data.has_previous %}
+        <a class="pagination-action" href="{% my_url 1 'page' request.GET.urlencode %}">
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i> </a>
+        <a class="pagination-action" href="{% my_url all_data.previous_page_number 'page' request.GET.urlencode %}">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+           
+        </a>
+    {% endif %}
+    {% for num in all_data.paginator.page_range %}
+        {% if all_data.number == num %}
+            <span class="pagination-number pagination-current">{{ num }}</span>
+        {% elif num > all_data.number|add:'-3' and num < all_data.number|add:'3' %}
+            <a class="pagination-number" href="{% my_url num 'page' request.GET.urlencode %}">{{ num }}</a>
+        {% endif %}
+    {% endfor %}
+    {% if all_data.has_next %}
+        <a class="pagination-action" href="{% my_url all_data.next_page_number 'page' request.GET.urlencode %}">
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+           
+        </a>
+        <a class="pagination-action" href="{% my_url all_data.paginator.num_pages 'page' request.GET.urlencode %}">
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+           
+        </a>
+    {% endif %}
+</div>
+</body>
+{% endblock %}

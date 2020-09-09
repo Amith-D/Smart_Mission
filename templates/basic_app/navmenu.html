@@ -1,0 +1,62 @@
+
+
+{% extends "basic_app/base.html" %}
+{% block body_block %}
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/menu_style.css'%} ">
+    <title>Home</title>
+  </head>
+  <body>
+
+<div class="jumbotron big-banner">
+	<h1>" Aiding Starts With Knowing "</h1>
+</div>
+<header>
+<h2>MENU</h2>
+</header>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-lg-3">
+			<div class="card">
+				<img class="form" src="{% static 'images/formpage.png' %} "class="card-img-top img-fluid"/>
+				   <div class="formblock" class="card-block">
+					   	<h3 class="card-title">Admission</h3>
+					   	<a href="{% url 'basicapp:formpage' %}" class="btn-form btn btn-primary">Go </a>
+					</div>
+	       </div>
+		</div>
+		<div class="col-md-6 col-lg-3">
+			<div class="card">
+				<img class="dash" src="{% static 'images/dash.png' %}" class="card-img-top img-fluid"/>
+				   <div class ="dashblock" class="card-block">
+					   	<h3 class="card-title"> Dashboard </h3>
+					   	<a href="{% url 'basicapp:dash' %}" class="btn-dash btn btn-primary">Go </a>
+					</div>
+	       </div>
+		</div>
+		<div class="col-md-6 col-lg-3">
+			<div class="card">
+				<img class ="search" src="{% static 'images/search.png' %}" class="card-img-top img-fluid"/>
+				   <div class="searchblock" class="card-block">
+					   	<h3 class="card-title"> Archive </h3>
+					   	<a href="{% url 'Universityapp:Search' %}" class="btn-search btn btn-primary">Go </a>
+					</div>
+	       </div>
+		</div>
+	</div>
+</div>
+
+  </body>
+</html>
+
+{% endblock %}

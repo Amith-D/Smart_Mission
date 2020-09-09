@@ -1,0 +1,39 @@
+{% extends "basic_app/base.html" %}
+{% load static %}
+<!DOCTYPE html>
+{% block body_block %}
+
+<html>
+<head>
+  <title>Registration</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ <link rel="stylesheet" type="text/css" href="{% static 'css/regt.css' %}">
+</head>
+    <body>
+
+  {% if registered %}
+  <div class="thank">
+     <h1>Thank you for Registering</h1>
+     <h5>Click here to <a href = "{% url 'basic_app:user_login' %}">Login</a></h5>
+     </div>
+  {% else %}
+  <div class="wrap">
+  <h2>Register </h2>
+    
+  <form enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+    {{ user_form.as_p }}
+    {{ profile_form.as_p }}
+    </div>
+    <input class="btn btn-danger" type="submit" name="" value="Register">
+ 
+
+  </form>
+ 
+  {% endif %}
+
+</div>
+</body>
+</html>
+{% endblock %}
